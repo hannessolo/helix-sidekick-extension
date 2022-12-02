@@ -797,13 +797,19 @@
       button: {
         action: async () => {
           const { config, status } = sk;
-          const editUrl = status.edit && status.edit.url;
+
+          const universalEditorBaseUrl = 'https://experience-stage.adobe.com/?cq-universal-editor_version=PR-102-5d8e433992439c9f53bb296e95b65a586fdbc97b#/@aem-sites-engineering/aem/editor/canvas/';
+          const universalEditorContentPath = status.preview?.sourceLocation && status.preview.sourceLocation.split('://')[1];
+
+          const editUrl = (status.edit && status.edit.url) || `${universalEditorBaseUrl}${universalEditorContentPath}`;
+
           window.open(
             editUrl,
             `hlx-sk-edit--${config.owner}/${config.repo}/${config.ref}${status.webPath}`,
           );
         },
-        isEnabled: (sidekick) => sidekick.status.edit && sidekick.status.edit.url,
+        isEnabled: (sidekick) => (sidekick.status.edit && sidekick.status.edit.url)
+          || (!sidekick.status.edit?.url && sidekick.status.preview?.url),
       },
     });
   }
