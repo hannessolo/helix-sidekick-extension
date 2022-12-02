@@ -798,7 +798,7 @@
         action: async () => {
           const { config, status } = sk;
 
-          const universalEditorBaseUrl = 'https://experience-stage.adobe.com/?cq-universal-editor_version=PR-102-5d8e433992439c9f53bb296e95b65a586fdbc97b#/@aem-sites-engineering/aem/editor/canvas/';
+          const universalEditorBaseUrl = 'https://experience-stage.adobe.com/?cq-universal-editor_version=PR-102-1801e7f982ff93a63d2d042e0c1640ac5c397f0f#/@aem-sites-engineering/aem/editor/canvas/';
           const universalEditorContentPath = status.preview?.sourceLocation && status.preview.sourceLocation.split('://')[1];
 
           const editUrl = (status.edit && status.edit.url) || `${universalEditorBaseUrl}${universalEditorContentPath}`;
